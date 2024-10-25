@@ -1,0 +1,28 @@
+<div class="navbar">
+    <div class="navbar-top">
+        <div class="nav-item" #homeLink>
+            <button  
+            mat-button 
+            [routerLink]="'home'"
+            >
+                <h1>HOME</h1>
+            </button>
+        </div>
+
+        <div class="nav-item" #featuredLink>
+            <button  
+            mat-button
+            [routerLink]="'featured'"
+            >
+                Featured Locations
+            </button>
+        </div>
+    </div>
+
+    <div 
+    #underline
+    class="underline"
+    [style.transition]="'margin ' + navAnimationTime + ', width ' + navAnimationTime"
+    >
+    </div>
+</div>
