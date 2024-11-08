@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button'
 
@@ -23,6 +23,7 @@ export class NavbarComponent implements AfterViewInit{
   
   public elements: navElement[] = []
   public selectedPage: string = "/home"
+
   public navAnimationTime: string = "0s"
 
   constructor(
@@ -49,11 +50,21 @@ export class NavbarComponent implements AfterViewInit{
         this.update()
       }
     })
+    
 
     //Wait to add the the animation time
     setTimeout(() => {
       this.navAnimationTime = ".3s"
     });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.navAnimationTime = "0s"
+    this.update()
+    setTimeout(() => {
+      this.navAnimationTime = ".3s"
+    });  
   }
 
   update(): void{
